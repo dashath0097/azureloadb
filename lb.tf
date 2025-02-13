@@ -139,7 +139,9 @@ resource "azurerm_network_interface_backend_address_pool_association" "nic_backe
   count                   = 2
   network_interface_id    = azurerm_network_interface.nic[count.index].id
   backend_address_pool_id = azurerm_lb_backend_address_pool.lb_backend_pool.id
+  ip_configuration_name   = "internal" # Add this line to fix the issue
 }
+
 
 # Create Virtual Machines
 resource "azurerm_windows_virtual_machine" "vm" {
